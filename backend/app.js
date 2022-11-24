@@ -8,7 +8,7 @@ app.use(express.json());
 app.use("/api/user",router);
 
 mongoose.connect(
-    //put your mongodb connection link
+    "mongodb+srv://admin:ovB8Ig3Mp7gA6vbb@cluster0.pn9hvv1.mongodb.net/OPERATIONWORKFLOWMANAGEMENT?retryWrites=true&w=majority"
     ).then(()=>app.listen(5000)).then(()=>
     console.log("connected To DataBase And Listening To LocalHost 5000")
     )
