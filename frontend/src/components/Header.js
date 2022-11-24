@@ -1,7 +1,10 @@
 import React from 'react';
 import { AppBar, Typography, Toolbar, Box ,Button} from "@mui/material";
 import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
+
 const Header = () => {
+  const isLoggedIn = useSelector((state) => state.isLoggedIn);
   return (
     <AppBar 
     position="stticky"
@@ -11,12 +14,18 @@ const Header = () => {
         <Typography variant="h4">Operation Workflow Management</Typography>
 
         <Box display="flex" marginLeft="auto">
-          <Button LinkComponent={Link} to="/auth"
+
+          { !isLoggedIn && <>
+            <Button LinkComponent={Link} to="/auth"
           variant ='contained' sx={{margin:1, borderRadius:10}} color="warning">Login</Button>
           <Button LinkComponent={Link} to="/auth"
           variant ='contained'  sx={{margin:1, borderRadius:10}} color="warning">Signup</Button>
-          <Button LinkComponent={Link} to="/auth"
+          </>}
+
+          { isLoggedIn && (
+            <Button LinkComponent={Link} to="/auth"
           variant ='contained'  sx={{margin:1, borderRadius:10}} color="warning">LogOut</Button>
+          )}
 
         </Box>
       </Toolbar>
